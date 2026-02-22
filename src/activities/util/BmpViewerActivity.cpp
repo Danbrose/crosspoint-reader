@@ -123,7 +123,7 @@ void BmpViewerActivity::onEnter() {
       renderer.drawBitmap(bitmap, x, y, pageWidth, pageHeight, 0, 0);
 
       if (isConfirmingDelete) {
-          GUI.drawPopup(renderer, tr(STR_DELETE_IMAGE_PROMPT));
+        GUI.drawPopup(renderer, tr(STR_DELETE_IMAGE_PROMPT));
       }
 
       // Draw UI hints on the base layer
@@ -221,7 +221,7 @@ void BmpViewerActivity::loop() {
       GUI.drawPopup(renderer, tr(STR_FAILED_LOWER));
     }
     renderer.displayBuffer(HalDisplay::FAST_REFRESH);
-    
+
     delay(1000);
     onEnter();
     return;
@@ -252,7 +252,7 @@ void BmpViewerActivity::loop() {
   }
 
   if (mappedInput.wasReleased(MappedInputManager::Button::Down)) {
-    if (!isConfirmingDelete && siblingImages.size() > 1 && currentImageIndex != -1 && 
+    if (!isConfirmingDelete && siblingImages.size() > 1 && currentImageIndex != -1 &&
         currentImageIndex < static_cast<int>(siblingImages.size()) - 1) {
       currentImageIndex++;
       std::string dirPath = "/";

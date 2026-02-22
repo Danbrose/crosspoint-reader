@@ -17,7 +17,7 @@ class BmpViewerActivity final : public Activity {
 
  private:
   void loadSiblingImages();
-  
+
   std::string filePath;
   std::function<void()> onGoBack;
   bool isConfirmingDelete = false;
