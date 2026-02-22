@@ -65,7 +65,7 @@ void SleepActivity::renderCustomSleepScreen() const {
         continue;
       }
 
-      if (filename.substr(filename.length() - 4) != ".bmp") {
+      if (StringUtils::checkFileExtension(filename, ".bmp")) {
         LOG_DBG("SLP", "Skipping non-.bmp file name: %s", name);
         dirFile.close();
         continue;

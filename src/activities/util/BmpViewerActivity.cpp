@@ -175,16 +175,13 @@ void BmpViewerActivity::loop() {
   if (mappedInput.wasReleased(MappedInputManager::Button::Confirm)) {
     if (isConfirmingDelete) {
       GUI.drawPopup(renderer, tr(STR_LOADING_POPUP));
-      renderer.displayBuffer(HalDisplay::FAST_REFRESH);
 
       if (Storage.remove(filePath.c_str())) {
         GUI.drawPopup(renderer, tr(STR_DONE));
-        renderer.displayBuffer(HalDisplay::FAST_REFRESH);
         delay(1000);
         if (onGoBack) onGoBack();
       } else {
         GUI.drawPopup(renderer, tr(STR_FAILED_LOWER));
-        renderer.displayBuffer(HalDisplay::FAST_REFRESH);
         delay(1000);
         isConfirmingDelete = false;
         onEnter();
@@ -193,7 +190,6 @@ void BmpViewerActivity::loop() {
     }
 
     GUI.drawPopup(renderer, tr(STR_LOADING_POPUP));
-    renderer.displayBuffer(HalDisplay::FAST_REFRESH);
 
     bool success = false;
     FsFile inFile, outFile;
@@ -220,7 +216,6 @@ void BmpViewerActivity::loop() {
     } else {
       GUI.drawPopup(renderer, tr(STR_FAILED_LOWER));
     }
-    renderer.displayBuffer(HalDisplay::FAST_REFRESH);
 
     delay(1000);
     onEnter();
