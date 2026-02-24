@@ -13,3 +13,4 @@ build
 .history/
 /.venv
 *.local*
+CLAUDE.md

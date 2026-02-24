@@ -478,10 +478,8 @@ void EpubReaderActivity::onReaderMenuConfirm(EpubReaderMenuActivity::MenuAction 
 
 void EpubReaderActivity::applyReaderDisplaySettings(const uint8_t orientation, const bool invertScreen) {
   const uint8_t invertValue = invertScreen ? 1 : 0;
-  const uint8_t aaValue = invertScreen ? 0 : SETTINGS.textAntiAliasing;
   // No-op if the selected display settings match current settings.
-  if (SETTINGS.orientation == orientation && SETTINGS.invertReaderScreen == invertValue &&
-      SETTINGS.textAntiAliasing == aaValue) {
+  if (SETTINGS.orientation == orientation && SETTINGS.invertReaderScreen == invertValue) {
     return;
   }
 
@@ -497,10 +495,6 @@ void EpubReaderActivity::applyReaderDisplaySettings(const uint8_t orientation, c
     // Persist the selection so the reader keeps the new orientation on next launch.
     SETTINGS.orientation = orientation;
     SETTINGS.invertReaderScreen = invertValue;
-    // Inverted display and text anti-aliasing produce poor visual results together.
-    if (invertScreen) {
-      SETTINGS.textAntiAliasing = 0;
-    }
     SETTINGS.saveToFile();
 
     // Update renderer orientation to match the new logical coordinate system.
